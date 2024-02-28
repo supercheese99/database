@@ -202,3 +202,29 @@ footer nav {
   display: flex;
   flex-direction: column;
 }
+
+/* single movie page styles */
+
+/* .movie-container {
+  transform: translate(20%, 20%);
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10rem;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-info h2, p {
+  width: 50%;
+  margin-left: 2rem;
+  text-align: left;
+}
+
+.movie-container img {
+ border: 3px solid #283033;
+ border-radius: 10px;
+ width: 300px;
+} */

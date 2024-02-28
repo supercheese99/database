@@ -1,5 +1,4 @@
 import React from 'react'
-import CarouselItem from './CarouselItem'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import MovieList from './MovieList'
