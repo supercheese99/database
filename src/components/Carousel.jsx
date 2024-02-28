@@ -40,6 +40,8 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  centerMode: true,
+  centerPadding: '0',
 };
 
 function buildImage(path, size) {
@@ -48,18 +50,27 @@ function buildImage(path, size) {
 
 
   return (
-    <Slider {...settings}>
-        {movieData.map((item) => {
-          const image = buildImage(item.poster_path, "w500");
-          return (
-            <div key={item.id} className="slider-item">
-              <Link to={`/movie/${item.id}`} className="movie-item">
-                <img src={image} alt={item.original_title} />
-              </Link>
-            </div>
-          )
-          })}
-    </Slider>
+    <div className='carousel-container'>
+      <Slider {...settings}>
+          {movieData.map((item) => {
+            const image = buildImage(item.backdrop_path, "w780");
+            return (
+              <div key={item.id} className="slider-item">
+                <div className='image-container'>
+
+                <Link to={`/movie/${item.id}`} className="movie-item">
+                  <img src={image} alt={item.original_title} className='slider-img'/>
+                  <div className='title-overlay'>
+                    <h2>{item.original_title}</h2>
+                  </div>
+                </Link>
+
+                </div>
+              </div>
+            )
+            })}
+      </Slider>
+    </div>
   )
 }
 

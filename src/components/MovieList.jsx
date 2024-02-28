@@ -124,7 +124,7 @@ const MovieList = () => {
                 const image = buildImage(item.poster_path, "w500");
                     return (
                         <Link to={`/movie/${item.id}`} className="movie-item">
-                            <img src={image} />
+                            <img src={image} className="movie-list-img"/>
         
                             <div className="movie-name">
                                 {item.original_title ? item.original_title : item.original_name}
