@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage"
 import AboutPage from "../pages/AboutPage"
 import MoviePage from "../pages/MoviePage"
 import Favourites from "../pages/Favourites"
+import Carousel from "../components/Carousel"
 
 
 const AppRouter = () => {

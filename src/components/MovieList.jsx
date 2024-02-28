@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AppRouter from '../routers/AppRouter';
 import { Link } from 'react-router-dom';
+import Carousel from './Carousel';
 
 const MovieList = () => {
 
@@ -95,6 +96,7 @@ const MovieList = () => {
 
   return (
     <div className="background-container">
+        
         <div className="button-container">
             <button onClick={() => {
             getPopularMovieData("movie");
