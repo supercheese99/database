@@ -58,12 +58,19 @@ function buildImage(path, size) {
               <div key={item.id} className="slider-item">
                 <div className='image-container'>
 
-                <Link to={`/movie/${item.id}`} className="movie-item">
+                <div className="movie-item">
                   <img src={image} alt={item.original_title} className='slider-img'/>
-                  <div className='title-overlay'>
-                    <h2>{item.original_title}</h2>
-                  </div>
-                </Link>
+
+                    <div className='title-overlay'>
+                      <h2>{item.original_title}</h2>
+                      <h4>{item.release_date}</h4>
+                      <p>{item.overview}</p>
+                      <Link to={`/movie/${item.id}`}>
+                      <button>See More</button>
+                      </Link>
+                    </div>
+
+                </div>
 
                 </div>
               </div>

@@ -9,6 +9,7 @@ import AboutPage from "../pages/AboutPage"
 import MoviePage from "../pages/MoviePage"
 import Favourites from "../pages/Favourites"
 import Carousel from "../components/Carousel"
+import BackToTop from "../components/BackToTop"
 
 
 const AppRouter = () => {
@@ -21,6 +22,7 @@ const AppRouter = () => {
             <Route path="/movie/:id" element={<MoviePage />} />
             <Route path="/favourites" element={<Favourites />} />
         </Routes>
+        <BackToTop />
         <Footer />
     </BrowserRouter>
   )
