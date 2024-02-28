@@ -1,0 +1,152 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0rem;
+}
+
+a {
+  font-weight: 500;
+  color: #ff941c;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #000000;
+  background-color: #283033;
+  padding: 1rem 2rem 0rem;
+}
+
+#logo {
+  font-size: 2rem;
+  font-family: "gimlet-sans-variable",sans-serif;
+  font-variation-settings: 'opsz' 36, 'wght' 900, 'slnt' -9;
+}
+
+#search-bar {
+  margin-right: 1rem;
+}
+
+#search-button {
+  padding: 0.2em 0.9em;
+}
+
+/* nav styles */
+
+nav ul li {
+  list-style: none;
+  display: inline-flex;
+  margin-right: 2rem;
+}
+
+nav ul {
+  padding: 0;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #283033;
+
+  margin: auto;
+  display: flex;
+  text-align: center; /*this makes sure that the carousel, buttons and movies are centered on the website*/
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #5d8696;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* movie containers */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.movie-name {
+  color: #283033;
+}
+
+img {
+  border: 2px solid #283033;
+  border-radius: 10px;
+  width: 200px;
+  height: auto;
+}
+
+/* button styles */
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+  margin: 0 auto;
+}
+
+button {
+  border-radius: 8px;
+  border: 2px solid #ff941c;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #55a8c9;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+
+button:hover,
+button:active {
+  border-color: #283033;
+  background-color: #ff941c;
+  color: #283033;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* footer styles */
+footer {
+  margin: 0 auto;
+  background-color: #283033;
+  border-top: 2px solid #000000;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+}
+
+footer h2 {
+  color: #ff941c;
+}
+
+footer nav {
+  display: flex;
+  flex-direction: column;
+}
