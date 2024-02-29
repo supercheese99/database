@@ -4,6 +4,7 @@ import axios from 'axios';
 import AppRouter from '../routers/AppRouter';
 import { Link } from 'react-router-dom';
 import Carousel from './Carousel';
+import { format } from 'date-fns';
 
 const MovieList = () => {
 
@@ -93,6 +94,11 @@ const MovieList = () => {
         return `http://image.tmdb.org/t/p/${size}${path}`;
     }
 
+    // display only one decimal place
+    const roundToOneDecimal = (number) => {
+    return number.toFixed(1);
+  };
+
 
   return (
     <div className="background-container">
@@ -122,12 +128,17 @@ const MovieList = () => {
         <div className="grid-container">
             {movieData.map((item) => {
                 const image = buildImage(item.poster_path, "w500");
+                const formattedDate = format(new Date(item.release_date), 'MMMM dd, yyyy');
+                const roundedVoteAverage = roundToOneDecimal(item.vote_average);
+
                     return (
                         <Link to={`/movie/${item.id}`} className="movie-item">
                             <img src={image} className="movie-list-img"/>
         
                             <div className="movie-name">
-                                {item.original_title ? item.original_title : item.original_name}
+                                <div>{item.original_title ? item.original_title : item.original_name}</div>
+                                <div>{formattedDate}</div>
+                                <div className="vote-average">{roundedVoteAverage}</div>
                             </div>
         
         

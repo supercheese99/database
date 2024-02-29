@@ -57,9 +57,10 @@ const MoviePage = () => {
   return (
     <div className="movie-container">
 
-      <img src={`http://image.tmdb.org/t/p/w500${poster_path}`} alt={original_title} />
+      <img src={`http://image.tmdb.org/t/p/w500${poster_path}`} alt={original_title} className="single-img" />
       <div className='movie-info'>
         <h2>{original_title}</h2>
+        <p></p>
         <p>{overview}</p>
       </div>
 

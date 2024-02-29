@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import {format} from 'date-fns';
 
 
 const Carousel = () => {
@@ -47,12 +48,31 @@ function buildImage(path, size) {
   return `http://image.tmdb.org/t/p/${size}${path}`;
 }
 
+// shorten the overview
+const truncateOverview = (overview, maxLength) => {
+  if (!overview) {
+    return ''; // Handle the case where overview is null or undefined
+  }
+  if (overview.length <= maxLength) {
+    return overview;
+  }
+  return overview.substring(0, maxLength).trim() + '...';
+};
+
+// display only one decimal place
+const roundToOneDecimal = (number) => {
+  return number.toFixed(1);
+};
 
   return (
     <div className='carousel-container'>
       <Slider {...settings}>
           {movieData.map((item) => {
             const image = buildImage(item.backdrop_path, "w780");
+            const truncatedOverview = truncateOverview(item.overview, 150);
+            const formattedDate = format(new Date(item.release_date), 'MMMM dd, yyyy');
+            const roundedVoteAverage = roundToOneDecimal(item.vote_average);
+
             return (
               <div key={item.id} className="slider-item">
                 <div className='image-container'>
@@ -62,8 +82,9 @@ function buildImage(path, size) {
 
                     <div className='title-overlay'>
                       <h2>{item.original_title}</h2>
-                      <h4>{item.release_date}</h4>
-                      <p>{item.overview}</p>
+                      <h4>{formattedDate}</h4>
+                      <p>{truncatedOverview}</p>
+
                       <Link to={`/movie/${item.id}`}>
                       <button>See More</button>
                       </Link>
