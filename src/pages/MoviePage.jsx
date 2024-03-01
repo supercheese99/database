@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import MovieList from '../components/MovieList';
-import Carousel from '../components/Carousel';
+import { format } from 'date-fns';
+import Recommended from '../components/Recommended';
 
 const MoviePage = () => {
 
@@ -45,26 +46,41 @@ const MoviePage = () => {
   }
 
   // access the movie data
-  const {original_title, overview, poster_path} = movieData;
+  const {original_title, overview, poster_path, release_date, vote_average} = movieData;
 
 
 //  function to get the image
   function buildImage(path, size) {
     return `http://image.tmdb.org/t/p/${size}${path}`;
 }
+// display only one decimal place
+  const roundToOneDecimal = (number) => {
+    return number.toFixed(1);
+};
+
+const formattedDate = format(new Date(release_date), 'MMMM dd, yyyy');
+const roundedVoteAverage = roundToOneDecimal(vote_average);
 
 
   return (
+    <>
     <div className="movie-container">
 
       <img src={`http://image.tmdb.org/t/p/w500${poster_path}`} alt={original_title} className="single-img" />
       <div className='movie-info'>
-        <h2>{original_title}</h2>
-        <p></p>
+        <h1>{original_title}</h1>
+
+        <div>
+          <p className="release-date">Release Date: {formattedDate}</p>
+          <h2 className="single-vote">{roundedVoteAverage}</h2>
+        </div>
+
         <p>{overview}</p>
       </div>
 
     </div>
+    <Recommended />
+    </>
   )
 }
 

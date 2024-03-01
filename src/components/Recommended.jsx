@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import {format} from 'date-fns';
 
 
-const Carousel = () => {
+const Recommended = () => {
 
 const [movieData, setMovieData] = useState([]);
 const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
@@ -38,7 +38,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 5,
   slidesToScroll: 1,
   centerMode: true,
   centerPadding: '0',
@@ -65,42 +65,30 @@ const roundToOneDecimal = (number) => {
 };
 
   return (
-    <div className='carousel-container'>
-
+    <div className='recommended-container'>
+      <h2>Check These Movies Out</h2>
       <Slider {...settings}>
           {movieData.map((item) => {
-            const image = buildImage(item.backdrop_path, "w780");
-            const truncatedOverview = truncateOverview(item.overview, 150);
-            const formattedDate = format(new Date(item.release_date), 'MMMM dd, yyyy');
-            const roundedVoteAverage = roundToOneDecimal(item.vote_average);
+            const image = buildImage(item.poster_path, "w500");
 
             return (
-              <div key={item.id} className="slider-item">
-                <div className='image-container'>
+              <div key={item.id} className="recommended-slider-item">
 
-                <div className="slider-movie-item">
-                  <img src={image} alt={item.original_title} className='slider-img'/>
+                <Link to={`/movie/${item.id}`}>
+                <div className="recommended-movie-item">
 
-                    <div className='title-overlay'>
-                      <h2>{item.original_title}</h2>
-                      <h4>{formattedDate}</h4>
-                      <p>{truncatedOverview}</p>
-
-                      <Link to={`/movie/${item.id}`}>
-                      <button>See More</button>
-                      </Link>
-                    </div>
+                  <img src={image} alt={item.original_title} className='recommended-slider-img'/>
+                  <h2>{item.original_title}</h2>
 
                 </div>
+                </Link>
 
-                </div>
               </div>
             )
             })}
       </Slider>
-
     </div>
   )
 }
 
-export default Carousel
+export default Recommended

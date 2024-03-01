@@ -133,15 +133,27 @@ const MovieList = () => {
 
                     return (
                         <Link to={`/movie/${item.id}`} className="movie-item">
+                            
                             <img src={image} className="movie-list-img"/>
         
                             <div className="movie-name">
-                                <div>{item.original_title ? item.original_title : item.original_name}</div>
-                                <div>{formattedDate}</div>
-                                <div className="vote-average">{roundedVoteAverage}</div>
+
+                            <div><p className="release-date">{formattedDate}</p></div>
+                            
+                                <div className="vote-title">
+ 
+                                    <div>
+                                    <h3 className="vote-title single-vote">{roundedVoteAverage}</h3>
+                                    </div>
+                                
+                                    <div>
+                                    <h3>{item.original_title ? item.original_title : item.original_name}</h3>
+                                    </div>
+                                
+                                </div>
+
                             </div>
-        
-        
+
                         </Link>
                     )
                 }

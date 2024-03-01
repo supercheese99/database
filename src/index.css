@@ -78,6 +78,7 @@ h1 {
   color: #283033;
   display: flex;
   flex-direction: column;
+  width: 200px;
 }
 
 .movie-list-img {
@@ -87,14 +88,30 @@ h1 {
   height: auto;
 }
 
+.vote-title {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vote-title .single-vote {
+  margin-left: 0;
+}
+
 /* slider styles */
 
 .carousel-container {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   margin-bottom: 5rem;
   border-bottom: 3px solid #000000;
-  background-color: #283033;
+  /* background-color: #283033; */
 }
 
 .image-container {
@@ -102,32 +119,26 @@ h1 {
   justify-content: center;
 }
 
+.slider-movie-item {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #213547;
+}
+
 .slider-item {
-  /* text-align: center; */
   position: relative;
 }
 
-.slider-img {
-  border-radius: 0;
-  border: none;
-}
 
 .title-overlay {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #ff941c;
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  transform: translate(-100%, -50%);
   width: 30%;
-  height: 100%;
-  text-align: right;
-  z-index: 2;
+  color: #ff941c;
 
-}
+} 
 
 .title-overlay h2, .title-overlay h4, .title-overlay p, .title-overlay button {
   margin-right: 1rem;
@@ -221,10 +232,15 @@ footer nav {
   flex-direction: column;
 }
 
-.movie-info h2, .movie-info p {
+.movie-info h1, .movie-info p {
   width: 50%;
   margin-left: 2rem;
   text-align: left;
+}
+
+.release-date {
+  font-style: italic;
+  margin: 0;
 }
 
 .single-img {
@@ -232,3 +248,32 @@ footer nav {
  border-radius: 10px;
  width: 300px;
 } 
+
+/* single movie page recommended slider */
+.single-vote {
+  color: #000000;
+  background-color: #55a8c9;
+  border: 2px solid #ff941c;
+  border-radius: 10px;
+  width: 50px;
+  padding: .5rem 0rem;
+  margin-left: 2rem;
+}
+
+.recommended-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.recommended-movie-item {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recommended-slider-img {
+  width: 200px;
+  border: 3px solid #283033;
+  border-radius: 10px;
+}
