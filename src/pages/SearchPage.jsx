@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
+import SearchBar from '../components/SearchBar';
 
 const SearchPage = () => {
 

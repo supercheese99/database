@@ -99,7 +99,6 @@ const MovieList = () => {
     return number.toFixed(1);
   };
 
-
   return (
     <div className="background-container">
         
@@ -132,8 +131,9 @@ const MovieList = () => {
                 const roundedVoteAverage = roundToOneDecimal(item.vote_average);
 
                     return (
-                        <Link to={`/movie/${item.id}`} className="movie-item">
-                            
+                        <div className="movie-item">
+                            <Link to={`/movie/${item.id}`}>
+
                             <img src={image} className="movie-list-img"/>
         
                             <div className="movie-name">
@@ -153,8 +153,9 @@ const MovieList = () => {
                                 </div>
 
                             </div>
+                            </Link>
 
-                        </Link>
+                        </div>
                     )
                 }
         

@@ -260,6 +260,12 @@ footer nav {
   margin-left: 2rem;
 }
 
+.vote-fave {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .recommended-container {
   width: 70%;
   margin: 0 auto;
@@ -276,4 +282,40 @@ footer nav {
   width: 200px;
   border: 3px solid #283033;
   border-radius: 10px;
+}
+
+/* about page styles */
+
+.about-text {
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-text a {
+  color: #283033;
+  text-decoration: underline;
+}
+
+.about-text h4 {
+  color: #ff941c;
+} 
+
+/* favourites page styles */
+
+.favorites-wrapper {
+  height: 100dvh;
+}
+
+.no-fave {
+  color: white;
+  background-color: #55a8c9;
+  border: 3px solid #ff941c;
+  border-radius: 10px;
+  width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 }

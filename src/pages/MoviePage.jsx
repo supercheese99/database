@@ -45,7 +45,7 @@ const MoviePage = () => {
     return <div>Error!</div>
   }
 
-  // access the movie data
+// access the movie data
   const {original_title, overview, poster_path, release_date, vote_average} = movieData;
 
 
@@ -61,6 +61,11 @@ const MoviePage = () => {
 const formattedDate = format(new Date(release_date), 'MMMM dd, yyyy');
 const roundedVoteAverage = roundToOneDecimal(vote_average);
 
+// favouriting movies
+  const handleAddToFavorites = (movie) => {
+    addToFavorites(movie);
+  };
+
 
   return (
     <>
@@ -72,7 +77,13 @@ const roundedVoteAverage = roundToOneDecimal(vote_average);
 
         <div>
           <p className="release-date">Release Date: {formattedDate}</p>
-          <h2 className="single-vote">{roundedVoteAverage}</h2>
+          <div className="vote-fave">
+            <h2 className="single-vote">{roundedVoteAverage}</h2>
+            <button onClick={() => handleAddToFavorites({ id: movieData.id, title: movieData.original_title })} className="fave-button">
+                Add to Favorites
+            </button>
+          </div>
+          
         </div>
 
         <p>{overview}</p>
