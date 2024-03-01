@@ -1,6 +1,7 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const SearchPage = () => {
 
@@ -9,7 +10,7 @@ const SearchPage = () => {
   }, []);
 
   return (
-    <div>SearchPage</div>
+    <div><h2>Search Results</h2></div>
   )
 }
 
