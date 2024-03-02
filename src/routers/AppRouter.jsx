@@ -13,7 +13,10 @@ import BackToTop from "../components/BackToTop"
 import SearchPage from "../pages/SearchPage"
 
 
+
 const AppRouter = () => {
+
+
   return (
     <BrowserRouter>
         <Header />
