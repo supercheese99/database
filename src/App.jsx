@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import AppRouter from './routers/AppRouter'
+import { FavoritesProvider } from './components/FavouritesContext';
 import './App.css'
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
   return (
 
     <>
+    <FavoritesProvider>
       <AppRouter />
+    </FavoritesProvider>
     </>
   )
 }

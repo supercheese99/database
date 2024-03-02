@@ -13,8 +13,7 @@ const Footer = () => {
       <nav>
         <h2>The Basics</h2>
         <Link to="/about">About Super Movies</Link>
-        <Link to="">Contact Us</Link>
-        <Link to="">API</Link>
+        <Link to="https://www.themoviedb.org/">API</Link>
       </nav>
 
     </footer>
