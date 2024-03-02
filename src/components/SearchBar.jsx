@@ -5,6 +5,7 @@ import AppRouter from '../routers/AppRouter';
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
+  const [result, setResult] = useState([]);
   const navigate = useNavigate();
 
   const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
@@ -13,17 +14,16 @@ const SearchBar = ({ onSearch }) => {
     setQuery(e.target.value);
   };
 
-  const handleSearch = async () => {
+const handleSearch = async() => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`);
-      const data = await response.json();
+      const resp = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`);
 
-      console.log('Search results:', data.results);
+      console.log('Search results from API:', resp.data.results);
 
-      onSearch(query);
-
+      setResult(resp.data.results);
       // Navigate to the page with search results
       navigate(`/search/${query}`);
+
     } catch (error) {
       console.error('Error fetching search results:', error);
     }

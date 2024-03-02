@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useState } from "react"
 // components
 import Header from "../components/Header"
 import Footer from "../components/Footer"
@@ -16,6 +17,11 @@ import SearchPage from "../pages/SearchPage"
 
 const AppRouter = () => {
 
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (results) => {
+    setSearchResults(results);
+  };
 
   return (
     <BrowserRouter>
@@ -25,7 +31,7 @@ const AppRouter = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/movie/:id" element={<MoviePage />} />
             <Route path="/favourites" element={<Favourites />} />
-            <Route path="/search/:query" element={<SearchPage />} />
+            <Route path="/search/:query" element={<SearchPage searchResults={searchResults} />} />
         </Routes>
         <BackToTop />
         <Footer />
