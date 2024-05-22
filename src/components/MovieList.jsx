@@ -131,7 +131,7 @@ const MovieList = () => {
                 const roundedVoteAverage = roundToOneDecimal(item.vote_average);
 
                     return (
-                        <div className="movie-item">
+                        <div className="movie-item" >
                             <Link to={`/movie/${item.id}`}>
 
                             <img src={image} className="movie-list-img"/>

@@ -30,7 +30,7 @@ const handleSearch = async() => {
   };
 
   return (
-    <div>
+    <form onSubmit={handleSearch}> 
       <input
         type="text"
         placeholder="Search..."
@@ -38,10 +38,9 @@ const handleSearch = async() => {
         onChange={handleInputChange}
         id="search-bar"
       />
-      <button onClick={handleSearch} id="search-button">
-        Search
-      </button>
-    </div>
+      <input id="search-button" type="submit" value="Search">
+      </input>
+    </form>
   );
 };
 
