@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import AppRouter from './routers/AppRouter'
-import { FavoritesProvider } from './components/FavouritesContext';
+import { FavoritesProvider } from './components/FavoritesContext';
 import './App.css'
 
 function App() {

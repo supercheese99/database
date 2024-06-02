@@ -134,7 +134,7 @@ const MovieList = () => {
                         <div className="movie-item" >
                             <Link to={`/movie/${item.id}`}>
 
-                            <img src={image} className="movie-list-img"/>
+                            <img src={image} className="movie-list-img" />
         
                             <div className="movie-name">
 

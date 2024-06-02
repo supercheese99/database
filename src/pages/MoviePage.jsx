@@ -5,16 +5,16 @@ import axios from 'axios';
 import MovieList from '../components/MovieList';
 import { format } from 'date-fns';
 import Recommended from '../components/Recommended';
+import { useFavorites } from '../components/FavoritesContext';
 
 const MoviePage = () => {
 
-  // const id = useParams().id;
   const {id} = useParams();
-  console.log("Item:", id);
-
-  const [movieData, setMovieData] = useState(null);
+  // const [movieData, setMovieData] = useState(null);
+  const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
 
   const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
 
@@ -23,36 +23,48 @@ const MoviePage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMovie = async () => {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
-        setMovieData(response.data);
+        setMovie(response.data);
+        setLoading(false); // Update loading state
       } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+        setError(error); // Set error state
+        setLoading(false); // Update loading state even in case of error
       }
     };
 
-    fetchData();
-  }, [id, apiKey]);
+    fetchMovie();
+  }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error!</div>
+    return <div>Error: {error.message}</div>; // Display error message
   }
 
+  const isFavorite = movie && favorites.some(fav => fav.id === movie.id);
+
+  const handleToggleFavorite = () => {
+    if (movie) {
+      if (isFavorite) {
+        removeFromFavorites(movie.id);
+      } else {
+        addToFavorites(movie);
+      }
+    }
+  };
+
 // access the movie data
-  const {original_title, overview, poster_path, release_date, vote_average} = movieData;
+  const {original_title, overview, poster_path, release_date, vote_average} = movie;
 
-
-//  function to get the image
+// get the image, display default no-image image if there's no custom one
   function buildImage(path, size) {
-    return `http://image.tmdb.org/t/p/${size}${path}`;
-}
+    return path ? `http://image.tmdb.org/t/p/${size}${path}` : '/no-image.png';
+};
+
 // display only one decimal place
   const roundToOneDecimal = (number) => {
     return number.toFixed(1);
@@ -60,18 +72,13 @@ const MoviePage = () => {
 
 const formattedDate = format(new Date(release_date), 'MMMM dd, yyyy');
 const roundedVoteAverage = roundToOneDecimal(vote_average);
-
-// favouriting movies
-  const handleAddToFavorites = (movie) => {
-    addToFavorites(movie);
-  };
-
+const image = buildImage(poster_path, "w500");
 
   return (
     <>
     <div className="movie-container">
 
-      <img src={`http://image.tmdb.org/t/p/w500${poster_path}`} alt={original_title} className="single-img" />
+      <img src={image} alt={original_title} className="single-img" />
       <div className='movie-info'>
         <h1>{original_title}</h1>
 
@@ -79,8 +86,8 @@ const roundedVoteAverage = roundToOneDecimal(vote_average);
           <p className="release-date">Release Date: {formattedDate}</p>
           <div className="vote-fave">
             <h2 className="single-vote">{roundedVoteAverage}</h2>
-            <button onClick={() => handleAddToFavorites({ id: movieData.id, title: movieData.original_title })} className="fave-button">
-                Add to Favorites
+            <button onClick={handleToggleFavorite} className="fave-button">
+                {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>
           </div>
           

@@ -8,15 +8,13 @@ import Footer from "../components/Footer"
 import HomePage from "../pages/HomePage"
 import AboutPage from "../pages/AboutPage"
 import MoviePage from "../pages/MoviePage"
-import Favourites from "../pages/Favourites"
+import Favorites from "../pages/Favorites"
 import Carousel from "../components/Carousel"
 import BackToTop from "../components/BackToTop"
 import SearchPage from "../pages/SearchPage"
-
-
+import SearchBar from "../components/SearchBar" // Import SearchBar
 
 const AppRouter = () => {
-
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (results) => {
@@ -30,7 +28,7 @@ const AppRouter = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/movie/:id" element={<MoviePage />} />
-            <Route path="/favourites" element={<Favourites />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/search/:query" element={<SearchPage searchResults={searchResults} />} />
         </Routes>
         <BackToTop />
@@ -39,4 +37,4 @@ const AppRouter = () => {
   )
 }
 
-export default AppRouter
+export default AppRouter;

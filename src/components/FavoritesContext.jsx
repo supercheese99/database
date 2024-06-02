@@ -1,10 +1,16 @@
-// FavoritesContext.jsx
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    const storedFavorites = sessionStorage.getItem('favorites');
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const addToFavorites = (movie) => {
     setFavorites((prevFavorites) => [...prevFavorites, movie]);

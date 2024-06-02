@@ -29,10 +29,10 @@ const SearchPage = ({ searchResults }) => {
 
   useEffect(() => {
     handleSearch();
-  }, []);
+  }, [query]); // added 'query' to the square brackets
 
   function buildImage(path, size) {
-    return `http://image.tmdb.org/t/p/${size}${path}`;
+    return path ? `http://image.tmdb.org/t/p/${size}${path}` : '/no-image.png';
 };
 
   return (
