@@ -5,10 +5,12 @@ import AppRouter from '../routers/AppRouter';
 import { Link } from 'react-router-dom';
 import Carousel from './Carousel';
 import { format } from 'date-fns';
+import { useFavorites } from '../components/FavoritesContext';
 
 const MovieList = () => {
 
     const [movieData, setMovieData] = useState([]);
+    const [movie, setMovie] = useState(null);
     const [categoryName, setCategoryName] = useState([]);
     const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
 
@@ -99,6 +101,16 @@ const MovieList = () => {
     return number.toFixed(1);
   };
 
+  const handleToggleFavorite = () => {
+    if (movie) {
+      if (isFavorite) {
+        removeFromFavorites(movie.id);
+      } else {
+        addToFavorites(movie);
+      }
+    }
+  };
+
   return (
     <div className="background-container">
         
@@ -129,31 +141,32 @@ const MovieList = () => {
                 const image = buildImage(item.poster_path, "w500");
                 const formattedDate = format(new Date(item.release_date), 'MMMM dd, yyyy');
                 const roundedVoteAverage = roundToOneDecimal(item.vote_average);
+                const isFavorite = movie && favorites.some(fav => fav.id === movie.id);
 
                     return (
                         <div className="movie-item" >
-                            <Link to={`/movie/${item.id}`}>
 
-                            <img src={image} className="movie-list-img" />
-        
-                            <div className="movie-name">
-
-                            <div><p className="release-date">{formattedDate}</p></div>
-                            
-                                <div className="vote-title">
- 
-                                    <div>
-                                    <h3 className="vote-title single-vote">{roundedVoteAverage}</h3>
-                                    </div>
-                                
-                                    <div>
+                            <div className="vote-title">
+                                <div>
                                     <h3>{item.original_title ? item.original_title : item.original_name}</h3>
-                                    </div>
-                                
                                 </div>
-
                             </div>
+
+                            <Link to={`/movie/${item.id}`}>
+                                <img src={image} className="movie-list-img" />
                             </Link>
+                            
+                            <div>
+                                <h3 className="vote-title single-vote">{roundedVoteAverage}</h3>
+                            </div>
+
+                            <div>
+                                <p className="release-date">{formattedDate}</p>
+                            </div>
+
+                            <button onClick={handleToggleFavorite} className="fave-button">
+                                {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+                            </button>
 
                         </div>
                     )
