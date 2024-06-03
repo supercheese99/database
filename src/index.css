@@ -58,7 +58,7 @@ body {
   display: flex;
   text-align: center; /*this makes sure that the carousel, buttons and movies are centered on the website*/
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: #5d8696;
 }
 
@@ -108,10 +108,9 @@ h1 {
 
 .carousel-container {
   width: 90%;
+  height: 50dvh;
   margin: 0 auto;
   margin-bottom: 5rem;
-  border-bottom: 3px solid #000000;
-  /* background-color: #283033; */
 }
 
 .image-container {
@@ -123,7 +122,6 @@ h1 {
   margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
-  background-color: #213547;
 }
 
 .slider-item {

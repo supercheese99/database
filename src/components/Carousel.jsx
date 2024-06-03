@@ -35,7 +35,7 @@ useEffect(() => {
 
 // slick slider settings
 const settings = {
-  dots: true,
+  dots: false,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
@@ -79,17 +79,19 @@ const roundToOneDecimal = (number) => {
                 <div className='image-container'>
 
                 <div className="slider-movie-item">
-                  <img src={image} alt={item.original_title} className='slider-img'/>
+                  <div className='slider-img'>
+                    <img src={image} alt={item.original_title} />
+                  </div>
 
-                    <div className='title-overlay'>
-                      <h2>{item.original_title}</h2>
-                      <h4>{formattedDate}</h4>
-                      <p>{truncatedOverview}</p>
+                  <div className='title-overlay'>
+                    <h2>{item.original_title}</h2>
+                    <h4>{formattedDate}</h4>
+                    <p>{truncatedOverview}</p>
 
-                      <Link to={`/movie/${item.id}`}>
-                      <button>See More</button>
-                      </Link>
-                    </div>
+                    <Link to={`/movie/${item.id}`}>
+                    <button>Read More</button>
+                    </Link>
+                  </div>
 
                 </div>
 
