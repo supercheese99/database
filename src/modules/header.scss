@@ -1,0 +1,48 @@
+@use 'variables.scss';
+
+header {
+    width: 100dvw;
+    height: 10dvh;
+    display: flex;
+
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20 0px;
+            padding: 0 25px;
+
+            li {
+                padding-right: 10px;
+                z-index: 999;
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .hamburger {
+        display: none;
+
+        @media (max-width: variables.$tablet-breakpoint) {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-flow: column nowrap;
+            z-index: 10;
+        }
+
+        .burger {
+            width: 2rem;
+            height: 0.25rem;
+            border-radius: 10px;
+            background-color: variables.$text-color;
+            transform-origin: 1px;
+            transition: all 0.3s linear;
+        }
+    }
+}

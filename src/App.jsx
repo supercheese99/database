@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import AppRouter from './routers/AppRouter'
 import { FavoritesProvider } from './components/FavoritesContext';
-import './App.css'
+import './App.scss'
 
 function App() {
   const [count, setCount] = useState(0)

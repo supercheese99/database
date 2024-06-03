@@ -1,3 +1,9 @@
+// sass elements
+@use 'modules/body.scss';
+@use 'modules/footer.scss';
+@use 'modules/header.scss';
+@use 'modules/slider.scss';
+
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
