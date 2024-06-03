@@ -13,14 +13,14 @@ const MovieList = () => {
     const [movie, setMovie] = useState(null);
     const [categoryName, setCategoryName] = useState([]);
     const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+    const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
 
-    // used to be useEffect, but I thought I should use useState as I'm using it above
-    // tbh I don't remember what it does
+    // displays the initial list of movies (I chose it to be the popular movies)
     useState(() => {
         getPopularMovieData("movie");
     }, ([]));
 
-    // getting the popular movie data
+    // getting the popular movie data (works on button click)
     async function getPopularMovieData(type) {
         try {
 
@@ -29,9 +29,6 @@ const MovieList = () => {
 
             setMovieData(resp.data.results);
             setCategoryName("Popular");
-
-            // const image = buildImage(resp.data.results[0].poster_path, "w500");
-            // console.log(image);
 
         } catch (e) {
 
@@ -57,7 +54,7 @@ const MovieList = () => {
         }
     }
 
-    // getting Upcoming movie data
+    // getting upcoming movie data
     async function getUpcomingMovieData(type) {
         try {
 
@@ -91,7 +88,7 @@ const MovieList = () => {
         }
     }
 
-
+    // building the poster image of a movie
     function buildImage(path, size) {
         return `http://image.tmdb.org/t/p/${size}${path}`;
     }
@@ -101,13 +98,12 @@ const MovieList = () => {
     return number.toFixed(1);
   };
 
-  const handleToggleFavorite = () => {
-    if (movie) {
-      if (isFavorite) {
-        removeFromFavorites(movie.id);
-      } else {
-        addToFavorites(movie);
-      }
+  const handleToggleFavorite = (movie) => {
+    const isFavorite = favorites.some(fav => fav.id === movie.id);
+    if (isFavorite) {
+      removeFromFavorites(movie.id);
+    } else {
+      addToFavorites(movie);
     }
   };
 
@@ -137,10 +133,10 @@ const MovieList = () => {
         </div>
 
         <div className="grid-container">
-            {movieData.map((item) => {
-                const image = buildImage(item.poster_path, "w500");
-                const formattedDate = format(new Date(item.release_date), 'MMMM dd, yyyy');
-                const roundedVoteAverage = roundToOneDecimal(item.vote_average);
+            {movieData.map((movie) => {
+                const image = buildImage(movie.poster_path, "w500");
+                const formattedDate = format(new Date(movie.release_date), 'MMMM dd, yyyy');
+                const roundedVoteAverage = roundToOneDecimal(movie.vote_average);
                 const isFavorite = movie && favorites.some(fav => fav.id === movie.id);
 
                     return (
@@ -148,14 +144,14 @@ const MovieList = () => {
 
                             <div className="vote-title">
                                 <div>
-                                    <h3>{item.original_title ? item.original_title : item.original_name}</h3>
+                                    <h3>{movie.original_title ? movie.original_title : movie.original_name}</h3>
                                 </div>
                             </div>
 
-                            <Link to={`/movie/${item.id}`}>
+                            <Link to={`/movie/${movie.id}`}>
                                 <img src={image} className="movie-list-img" />
                             </Link>
-                            
+
                             <div>
                                 <h3 className="vote-title single-vote">{roundedVoteAverage}</h3>
                             </div>
@@ -164,7 +160,7 @@ const MovieList = () => {
                                 <p className="release-date">{formattedDate}</p>
                             </div>
 
-                            <button onClick={handleToggleFavorite} className="fave-button">
+                            <button onClick={() => handleToggleFavorite(movie)} className="fave-button">
                                 {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
                             </button>
 

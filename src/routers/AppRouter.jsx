@@ -12,7 +12,7 @@ import Favorites from "../pages/Favorites"
 import Carousel from "../components/Carousel"
 import BackToTop from "../components/BackToTop"
 import SearchPage from "../pages/SearchPage"
-import SearchBar from "../components/SearchBar" // Import SearchBar
+import SearchBar from "../components/SearchBar"
 
 const AppRouter = () => {
   const [searchResults, setSearchResults] = useState([]);
