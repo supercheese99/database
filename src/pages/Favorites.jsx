@@ -9,6 +9,11 @@ const Favorites = () => {
     document.title = 'Favorites';
   }, []);
 
+    // building the poster image of a movie
+    function buildImage(path, size) {
+      return `http://image.tmdb.org/t/p/${size}${path}`;
+  }
+
   return (
     <div className="favorites-wrapper">
       <h1>Favorites</h1>
@@ -19,7 +24,13 @@ const Favorites = () => {
       ) : (
         <ul>
           {favorites.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
+            // const image = buildImage(poster_path, "w500");
+        <Link to={`/movie/${movie.id}`}>
+          {/* <img src={image} className="movie-list-img" /> */}
+          <li key={movie.id}>{movie.title}</li>
+        </Link>
+
+            
           ))}
         </ul>
       )}
