@@ -6,6 +6,30 @@ header {
     display: flex;
     justify-content: space-evenly;
     background-color: variables.$bg-color;
+    border-bottom: solid 1px white;
+    padding-top: 2rem;
+    position: sticky;
+    top: 0;
+
+    #logo {
+        text-decoration: none;
+        font-family: variables.$logo-font-fam;
+        font-weight: variables.$logo-font-weight;
+        font-style: variables.$logo-font-style;
+        font-size: 2.5rem;
+        color: white;
+        text-shadow: variables.$logo-neon;
+        animation: blink 1s;
+        animation-delay: 1s;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;
+
+        @keyframes blink {
+            0%, 10%, 20%, 40%, 100% { opacity: 1 }
+            5%, 15%, 30%, 50% { opacity: 0 }
+        }
+
+    }
 
     .hamburger-wrapper {
         width: 3rem;
@@ -18,29 +42,47 @@ header {
             display: none;
     
             li {
-                padding-right: 10px;
-                // z-index: 9;
+                padding-right: 1rem;
     
                 a {
                     text-decoration: none;
                     color: variables.$text-color;
+                    font-size: variables.$link-size;
+                    & :active {
+                        color: variables.$link-active;
+                    }
                 }
             }
         }
         
         .bm-burger-bars {
-            background: variables.$text-color; 
-            border-radius: 15px;
+            background: variables.$text-color;
+            opacity: 1 !important;
+            border-radius: 3px;
+            height: 5px !important;
         }
 
         .bm-menu-wrap, .bm-overlay {
             position: relative;
-            top: 10%;
+            top: 15%;
         }
 
         .bm-overlay {
             left: 20%;
-            background: rgba(0, 0, 0, 1) !important;
+            background: rgba(0, 0, 0, 0) !important;
+        }
+
+        .bm-menu {
+            background: rgba(variables.$bg-color, 0.9);
+            border-left: 1px solid white;
+
+            .bm-item-list {
+                height: 95dvh !important;
+            }
+
+            .nav-links li {
+                padding-bottom: 2rem;
+            }
         }
     
     }
