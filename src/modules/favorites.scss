@@ -7,6 +7,10 @@
     flex-direction: column;
     gap: 30dvh;
 
+    @media (min-width: variables.$laptop-breakpoint) {
+        gap: 0;
+    }
+
     .no-fave {
         p {
             @media (min-width: variables.$laptop-breakpoint) {
