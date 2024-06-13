@@ -1,4 +1,5 @@
 @use 'variables.scss';
+@use 'mixins.scss';
 
 .swiper {
     display: block;
@@ -48,18 +49,13 @@
 
     button {
         padding: .5rem;
-        border: 2px solid variables.$text-color;
-        border-radius: 10px;
-        background-color: variables.$bg-color;
-        color: variables.$text-color;
         position: relative;
         z-index: 9999;
+        @include mixins.buttons;
+
 
         &:hover, &:focus {
-            border: 2px solid transparent;
-            background-color: variables.$text-color;
-            color: variables.$bg-color;
-            cursor: pointer;
+            @include mixins.button-hover-light;
         }
     }
 }

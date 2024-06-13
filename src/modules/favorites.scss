@@ -1,0 +1,73 @@
+@use 'variables.scss';
+@use 'mixins.scss';
+
+.favorites-wrapper {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 30dvh;
+
+    .no-fave {
+        p {
+            @media (min-width: variables.$laptop-breakpoint) {
+                font-size: 1.25rem;
+            }
+
+            a {
+                text-decoration: none;
+                color: variables.$accent-color;
+            }
+        }
+
+    }
+}
+
+.favorites-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .favorite-item {
+        font-family: variables.$head-font-fam;
+        text-align: center;
+
+        @media (min-width: variables.$tablet-breakpoint) {
+            width: 45%;
+        }
+        .movie-list-img {
+            border-radius: 10px;
+            width: 90dvw;
+            box-shadow: variables.$box-shadow;
+
+            @media (min-width: variables.$tablet-breakpoint) {
+                width: 45%;
+            }
+        }
+
+        .favorite-title {
+            text-decoration: none;
+        }
+
+        button {
+            padding: .5rem;
+            font-size: .65rem;
+            @include mixins.buttons;
+            
+            @media (min-width: variables.$laptop-breakpoint) {
+                font-size: 1rem;
+            }
+    
+            &:hover, &:focus {
+                @include mixins.button-hover-orange;
+            }
+        }
+    
+        .favorite-button {
+    
+            svg {
+                fill: white;
+                width: 1.5rem;
+            }
+        }
+    }
+}

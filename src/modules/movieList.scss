@@ -1,4 +1,5 @@
 @use 'variables.scss';
+@use 'mixins.scss';
 
 .background-container {
     text-align: center;
@@ -13,15 +14,10 @@
         }
 
         button {
-            border: 2px solid variables.$text-color;
-            border-radius: 10px;
-            background-color: variables.$bg-color;
-            color: variables.$text-color;
+            @include mixins.buttons;
 
             &:hover, &:focus {
-                border: 2px solid transparent;
-                background-color: variables.$text-color;
-                color: variables.$bg-color;
+                @include mixins.button-hover-light;
             }
         }
     }
@@ -62,21 +58,15 @@
 
     button {
         padding: .5rem;
-        border: 2px solid variables.$text-color;
-        border-radius: 10px;
-        background-color: variables.$bg-color;
-        color: variables.$text-color;
         font-size: .65rem;
-
+        @include mixins.buttons;
+        
         @media (min-width: variables.$laptop-breakpoint) {
             font-size: 1rem;
         }
 
         &:hover, &:focus {
-            border: 2px solid transparent;
-            background-color: variables.$accent-color;
-            color: variables.$bg-color;
-            cursor: pointer;
+            @include mixins.button-hover-orange;
         }
     }
 

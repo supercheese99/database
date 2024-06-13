@@ -1,17 +1,66 @@
 @use 'variables.scss';
+@use 'mixins.scss';
 
 .movie-container {
     display: flex;
     flex-direction: column;
     width: 90dvw;
-    padding: 0 5dvw;
+    padding: 1rem;
+
+    @media (min-width: variables.$laptop-breakpoint){
+        flex-direction: row;
+        gap: 1rem;
+    }
 
     .single-img {
+        width: 85dvw;
         height: auto;
         object-fit: contain;
         border-radius: 10px;
         box-shadow: variables.$box-shadow;
         border-radius: 10px;
+
+        @media (min-width: variables.$laptop-breakpoint) {
+            width: 30dvw;
+        }
+    }
+
+    .info-tidbits {
+
+        span {
+            color: variables.$accent-color;
+        }
+
+        .language {
+            span {
+                text-transform: uppercase;
+            }
+            
+        }
+    }
+
+    button {
+        padding: .5rem;
+        font-size: .65rem;
+        @include mixins.buttons;
+        
+        @media (min-width: variables.$laptop-breakpoint) {
+            font-size: 1rem;
+        }
+
+        &:hover, &:focus {
+            @include mixins.button-hover-orange;
+        }
+    }
+
+    .favorite-button {
+        position: relative;
+        top: 60%;
+
+        svg {
+            fill: white;
+            width: 1.5rem;
+        }
     }
 }
 
@@ -19,35 +68,47 @@
     width: 90dvw;
     display: flex;
     flex-direction: column;
-    padding: 0 5dvw 2rem;
+    padding: 1rem;
 
-    .actor {
-        border-top: 1px solid white;
-        padding-top: 1rem;
-        text-align: center;
-    }
+    .cast-list {
+        @media (min-width: variables.$laptop-breakpoint) {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
 
-    img {
-        box-shadow: variables.$box-shadow;
-        border-radius: 10px;
-        max-width: 80dvw;
+        .actor {
+            border-top: 1px solid white;
+            padding-top: 1rem;
+            text-align: center;
+
+            @media (min-width: variables.$laptop-breakpoint) {
+                border: none;
+            }
+
+            img {
+                box-shadow: variables.$box-shadow;
+                border-radius: 10px;
+                max-width: 200px;
+            }
+        }
     }
 
     .see-more-button {
         align-self: center;
         width: 40dvw;
         padding: .5rem;
-        border: 2px solid variables.$text-color;
-        border-radius: 10px;
-        background-color: variables.$bg-color;
-        color: variables.$text-color;
         font-size: .65rem;
 
+        @include mixins.buttons;
+
+        @media (min-width: variables.$laptop-breakpoint) {
+            font-size: 1.25rem;
+        }
+
         &:hover, &:focus {
-            border: 2px solid transparent;
-            background-color: variables.$accent-color;
-            color: variables.$bg-color;
-            cursor: pointer;
+            @include mixins.button-hover-orange;
         }
     }
 }

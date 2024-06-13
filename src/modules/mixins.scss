@@ -1,0 +1,24 @@
+@use 'variables.scss';
+
+// mixins for buttons and button states
+
+@mixin buttons {
+    border: 2px solid variables.$text-color;
+    border-radius: 10px;
+    background-color: variables.$bg-color;
+    color: variables.$text-color;
+}
+
+@mixin button-hover-orange {
+    border: 2px solid transparent;
+    background-color: variables.$accent-color;
+    color: variables.$bg-color;
+    cursor: pointer;
+}
+
+@mixin button-hover-light {
+    border: 2px solid transparent;
+    background-color: variables.$text-color;
+    color: variables.$bg-color;
+    cursor: pointer;
+}
