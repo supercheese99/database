@@ -1,5 +1,5 @@
 import React from 'react'
-import Carousel from '../components/Carousel';
+import Slides from '../components/Slides';
 import { useEffect } from 'react'
 import MovieList from '../components/MovieList';
 
@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
   <>
-    <Carousel />
+    <Slides />
     <MovieList />
   </>
 

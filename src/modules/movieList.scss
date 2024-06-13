@@ -1,0 +1,61 @@
+@use 'variables.scss';
+
+.background-container {
+    text-align: center;
+    padding: 2rem;
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+
+        button {
+            border: 2px solid variables.$text-color;
+            border-radius: 10px;
+            background-color: variables.$bg-color;
+            color: variables.$text-color;
+
+            &:hover, &:focus {
+                border: 2px solid transparent;
+                background-color: variables.$text-color;
+                color: variables.$bg-color;
+            }
+        }
+    }
+    
+    .grid-container {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        h3 {
+            font-size: .75rem;
+        }
+
+        .movie-item {
+            border-top: 1px solid variables.$text-color;
+            margin-top: 2rem;
+        }
+
+        .movie-list-img {
+            width: 200px;
+            height: auto;
+        }
+    }
+
+    button {
+        padding: .5rem;
+        border: 2px solid variables.$text-color;
+        border-radius: 10px;
+        background-color: variables.$bg-color;
+        color: variables.$text-color;
+        font-size: .65rem;
+
+        &:hover, &:focus {
+            border: 2px solid transparent;
+            background-color: variables.$accent-color;
+            color: variables.$bg-color;
+            cursor: pointer;
+        }
+    }
+}

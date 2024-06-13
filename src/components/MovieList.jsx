@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AppRouter from '../routers/AppRouter';
 import { Link } from 'react-router-dom';
-import Carousel from './Carousel';
+import Carousel from './Slides';
 import { format } from 'date-fns';
 import { useFavorites } from '../components/FavoritesContext';
 

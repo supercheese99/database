@@ -4,11 +4,18 @@ body {
     background-color: variables.$bg-color;
     color: variables.$text-color;
     margin: 0 auto;
+    width: 100%;
     font-family: variables.$body-font-fam;
     font-weight: variables.$body-font-weight;
     font-style: variables.$body-font-style;
 
     #root {
         padding: 0;
+    }
+
+    h1, h2, h3 {
+        font-family: variables.$head-font-fam;
+        font-weight: variables.$head-font-weight;
+        font-style: variables.$head-font-style;
     }
 }

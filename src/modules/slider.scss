@@ -1,5 +1,56 @@
 @use 'variables.scss';
 
-.carousel-container {
-    display: none;
+.swiper {
+    display: block;
+    width: 80dvw;
+    margin: auto;
+    position: relative;
+    overflow-x: hidden;
+    margin-top: 1rem;
+    font-size: .75rem;
+
+    .swiper-item {
+        position: relative;
+        z-index: 1;
+
+        .title-overlay {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            z-index: 10000;
+            pointer-events: auto;
+            background-color: rgba(variables.$bg-color, 0.7);
+            padding: 1rem;
+
+            .truncatedOverview {
+                display: none;
+
+                @media (min-width: variables.$tablet-breakpoint) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    img {
+        width: 80dvw;
+        border-radius: 10px;
+    }
+
+    button {
+        padding: 1rem;
+        border: 2px solid variables.$text-color;
+        border-radius: 10px;
+        background-color: variables.$bg-color;
+        color: variables.$text-color;
+        position: relative;
+        z-index: 9999;
+
+        &:hover, &:focus {
+            border: 2px solid transparent;
+            background-color: variables.$text-color;
+            color: variables.$bg-color;
+            cursor: pointer;
+        }
+    }
 }

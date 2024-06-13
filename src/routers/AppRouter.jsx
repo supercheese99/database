@@ -3,14 +3,14 @@ import { useState } from "react"
 // components
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Slides from "../components/Slides"
+import BackToTop from "../components/BackToTop"
 
 // pages
 import HomePage from "../pages/HomePage"
 import AboutPage from "../pages/AboutPage"
 import MoviePage from "../pages/MoviePage"
 import Favorites from "../pages/Favorites"
-import Carousel from "../components/Carousel"
-import BackToTop from "../components/BackToTop"
 import SearchPage from "../pages/SearchPage"
 import SearchBar from "../components/SearchBar"
 
