@@ -8,6 +8,10 @@
         display: flex;
         justify-content: center;
 
+        @media (min-width: variables.$tablet-breakpoint) {
+            justify-content: space-evenly
+        }
+
         button {
             border: 2px solid variables.$text-color;
             border-radius: 10px;
@@ -30,16 +34,29 @@
 
         h3 {
             font-size: .75rem;
+
+            @media (min-width: variables.$laptop-breakpoint) {
+                font-size: 0.9rem;
+            }
+
+            @media (min-width: variables.$large-screen-breakpoint) {
+                font-size: 1.5rem;
+            }
+    
         }
 
         .movie-item {
             border-top: 1px solid variables.$text-color;
             margin-top: 2rem;
+
+            
         }
 
         .movie-list-img {
             width: 200px;
             height: auto;
+            border-radius: 10px;
+            box-shadow: variables.$box-shadow;
         }
     }
 
@@ -51,11 +68,23 @@
         color: variables.$text-color;
         font-size: .65rem;
 
+        @media (min-width: variables.$laptop-breakpoint) {
+            font-size: 1rem;
+        }
+
         &:hover, &:focus {
             border: 2px solid transparent;
             background-color: variables.$accent-color;
             color: variables.$bg-color;
             cursor: pointer;
+        }
+    }
+
+    .favorite-button {
+
+        svg {
+            fill: white;
+            width: 1.5rem;
         }
     }
 }

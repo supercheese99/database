@@ -8,6 +8,15 @@
     overflow-x: hidden;
     margin-top: 1rem;
     font-size: .75rem;
+    box-shadow: variables.$box-shadow;
+
+    @media (min-width: variables.$laptop-breakpoint) {
+        font-size: 1rem;
+    }
+
+    @media (min-width: variables.$large-screen-breakpoint) {
+        font-size: 1.5rem;
+    }
 
     .swiper-item {
         position: relative;
@@ -38,7 +47,7 @@
     }
 
     button {
-        padding: 1rem;
+        padding: .5rem;
         border: 2px solid variables.$text-color;
         border-radius: 10px;
         background-color: variables.$bg-color;

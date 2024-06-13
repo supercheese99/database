@@ -84,12 +84,12 @@ const roundToOneDecimal = (number) => {
                 </div>
 
                 <div className='title-overlay'>
-                  <h2>{item.original_title}</h2>
+                  <h3>{item.original_title}</h3>
                   <h4>{formattedDate}</h4>
                   <p className='truncatedOverview'>{truncatedOverview}</p>
 
                   <Link to={`/movie/${item.id}`}>
-                  <button>Read More</button>
+                  <button className="read-more">Read More</button>
                   </Link>
                 </div>
 

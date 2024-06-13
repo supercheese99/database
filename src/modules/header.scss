@@ -30,6 +30,14 @@ header {
             5%, 15%, 30%, 50% { opacity: 0 }
         }
 
+        @media (min-width: variables.$laptop-breakpoint) {
+            font-size: 2rem;
+        }
+
+        @media (min-width: variables.$large-screen-breakpoint) {
+            font-size: 3rem;
+        }
+
     }
 
     .hamburger-wrapper {
@@ -55,13 +63,6 @@ header {
                 }
             }
         }
-        
-        .bm-burger-bars {
-            background: variables.$text-color;
-            opacity: 1 !important;
-            border-radius: 3px;
-            height: 5px !important;
-        }
 
         .bm-menu-wrap, .bm-overlay {
             position: relative;
@@ -69,7 +70,7 @@ header {
         }
 
         .bm-overlay {
-            left: 20%;
+            left: 0;
             background: rgba(0, 0, 0, 0) !important;
         }
 

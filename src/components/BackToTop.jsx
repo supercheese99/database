@@ -7,8 +7,9 @@ const BackToTopButton = () => {
   useEffect(() => {
     // Add scroll event listener to check scroll position
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsVisible(scrollTop > 200); // Set visibility based on scroll position
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const halfwayPoint = document.documentElement.scrollHeight / 2;
+      setIsVisible(scrollTop > halfwayPoint); // Set visibility based on scroll position
     };
 
     window.addEventListener('scroll', handleScroll);
