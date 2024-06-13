@@ -1,0 +1,10 @@
+@use 'variables.scss';
+
+.about-text {
+    width: 80dvw;
+
+    a, h4, strong {
+        text-decoration: none;
+        color: variables.$accent-color;
+    }
+}

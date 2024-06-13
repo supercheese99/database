@@ -1,0 +1,53 @@
+@use 'variables.scss';
+@use 'mixins.scss';
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 95dvw;
+
+    @media (min-width: variables.$laptop-breakpoint) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-evenly;
+        margin: 0;
+    }
+
+    .movie-item {
+        width: 90dvw;
+        text-align: center;
+
+        @media (min-width: variables.$laptop-breakpoint) {
+            width: 45dvw;
+        }
+
+        @media (min-width: variables.$desktop-breakpoint) {
+            width: 13dvw;
+        }
+
+        a {
+            text-decoration: none;
+            color: variables.$text-color;
+        }
+
+        img {
+            width: 90dvw;
+            border-radius: 10px;
+            box-shadow: variables.$box-shadow;
+
+            @media (min-width: variables.$tablet-breakpoint) {
+                width: 50dvw;
+            }
+            @media (min-width: variables.$laptop-breakpoint) {
+                width: 30dvw;
+            }
+
+            @media (min-width: variables.$desktop-breakpoint) {
+                width: 13dvw;
+            }
+
+        }
+    }
+}

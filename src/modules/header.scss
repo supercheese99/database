@@ -1,4 +1,5 @@
 @use 'variables.scss';
+@use 'mixins.scss';
 
 header {
     width: 100dvw;
@@ -59,6 +60,24 @@ header {
                     font-size: variables.$link-size;
                     & :focus {
                         color: variables.$link-active;
+                    }
+                }
+            }
+
+            form {
+                #search-bar {
+                    border: 1px solid white;
+                    border-radius: 10px;
+                    background-color: variables.$bg-color;
+                    padding: .5rem;
+                }
+
+                #search-button {
+                    @include mixins.buttons;
+                    padding: .5rem;
+
+                    &:hover, &:focus {
+                        @include mixins.button-hover-orange;
                     }
                 }
             }

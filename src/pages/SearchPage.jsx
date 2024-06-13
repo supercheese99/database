@@ -33,7 +33,7 @@ const SearchPage = ({ searchResults }) => {
 
   function buildImage(path, size) {
     return path ? `http://image.tmdb.org/t/p/${size}${path}` : '/no-image.png';
-};
+  };
 
   return (
     <>
@@ -53,7 +53,7 @@ const SearchPage = ({ searchResults }) => {
               <img src={image} alt={item.original_title || item.original_name} className='movie-list-img' />
 
               <div className="movie-name">
-              <h3>{item.original_title ? item.original_title : item.original_name}</h3>
+                <h3>{item.original_title ? item.original_title : item.original_name}</h3>
               </div>
 
             </Link>

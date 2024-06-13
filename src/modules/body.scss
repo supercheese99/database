@@ -7,6 +7,7 @@ body {
     font-family: variables.$body-font-fam;
     font-weight: variables.$body-font-weight;
     font-style: variables.$body-font-style;
+    margin: 0;
 
     #root {
         padding: 0;
@@ -16,6 +17,9 @@ body {
         font-family: variables.$head-font-fam;
         font-weight: variables.$head-font-weight;
         font-style: variables.$head-font-style;
+    }
+    h1, h2 {
+        margin: 1rem;
     }
 
     .back-to-top-button {
