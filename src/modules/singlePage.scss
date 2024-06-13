@@ -4,10 +4,50 @@
     display: flex;
     flex-direction: column;
     width: 90dvw;
-    padding-left: 5dvw;
+    padding: 0 5dvw;
 
     .single-img {
         height: auto;
         object-fit: contain;
+        border-radius: 10px;
+        box-shadow: variables.$box-shadow;
+        border-radius: 10px;
+    }
+}
+
+.cast-container {
+    width: 90dvw;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5dvw 2rem;
+
+    .actor {
+        border-top: 1px solid white;
+        padding-top: 1rem;
+        text-align: center;
+    }
+
+    img {
+        box-shadow: variables.$box-shadow;
+        border-radius: 10px;
+        max-width: 80dvw;
+    }
+
+    .see-more-button {
+        align-self: center;
+        width: 40dvw;
+        padding: .5rem;
+        border: 2px solid variables.$text-color;
+        border-radius: 10px;
+        background-color: variables.$bg-color;
+        color: variables.$text-color;
+        font-size: .65rem;
+
+        &:hover, &:focus {
+            border: 2px solid transparent;
+            background-color: variables.$accent-color;
+            color: variables.$bg-color;
+            cursor: pointer;
+        }
     }
 }

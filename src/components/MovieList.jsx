@@ -97,7 +97,7 @@ const MovieList = () => {
 
     // building the poster image of a movie
     function buildImage(path, size) {
-        return `http://image.tmdb.org/t/p/${size}${path}`;
+        return path ? `https://image.tmdb.org/t/p/${size}${path}` : '/no-image.png';
     }
 
     // display only one decimal place

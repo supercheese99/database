@@ -10,12 +10,13 @@ import { useFavorites } from '../components/FavoritesContext';
 const MoviePage = () => {
 
   const {id} = useParams();
-  // const [movieData, setMovieData] = useState(null);
+  const [movieData, setMovieData] = useState(null);
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cast, setCast] = useState([]);
+ const [cast, setCast] = useState([]);
   const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
+  const [showFullCast, setShowFullCast] = useState(false);
 
   const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
 
@@ -73,18 +74,27 @@ const MoviePage = () => {
     }
   };
 
+// display only some cast members by default
+const handleToggleCast = () => {
+  setShowFullCast(!showFullCast);
+};
+
 // access the movie data
-  const {original_title, overview, poster_path, release_date, vote_average} = movie;
+  const {original_title, overview, poster_path, release_date, vote_average, original_language, genres} = movie;
 
 // get the image, display default no-image image if there's no custom one
   function buildImage(path, size) {
     return path ? `http://image.tmdb.org/t/p/${size}${path}` : '/no-image.png';
 };
 
+function buildCastImage(path) {
+  return path ? `https://image.tmdb.org/t/p/w200${path}` : '/no-image.png';
+  };
+
 // display only one decimal place
   const roundToOneDecimal = (number) => {
     return number.toFixed(1);
-};
+  };
 
 const formattedDate = format(new Date(release_date), 'MMMM dd, yyyy');
 const roundedVoteAverage = roundToOneDecimal(vote_average);
@@ -93,42 +103,54 @@ const image = buildImage(poster_path, "w500");
   return (
     <>
     <div className="movie-container">
-
+      <h1>{original_title}</h1>
       <img src={image} alt={original_title} className="single-img" />
 
-      <div className='movie-info'>
-        <h1>{original_title}</h1>
-
+      <div className='movie-details'>
         <div>
-          <p className="release-date">Release Date: {formattedDate}</p>
-          <div className="vote-fave">
-            <h2 className="single-vote">{roundedVoteAverage}</h2>
+          <div className="genres">
+            <p className="release-date">Release Date: {formattedDate}</p>
+            <p className="language">Language: {original_language}</p>
+            <p className="genres">Genres: {genres.map(genre => genre.name).join(', ')}</p>
+          </div>
+
+          <div className="rating-favorite">
+            <h2 className="rating">Rating: {roundedVoteAverage}</h2>
             <button onClick={handleToggleFavorite} className="favorite-button">
                 {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>
           </div>
-          
         </div>
 
         <p>{overview}</p>
       </div>
 
     </div>
+
     <div className="cast-container">
         <h2>Cast</h2>
         <div className="cast-list">
-          {cast.map(actor => (
-            <div className="actor" key={actor.id}>
-              <img src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`} alt={actor.name} />
+          {(showFullCast ? cast : cast.slice(0, 5)).map((actor) => {
+            const castImage = buildCastImage(actor.profile_path);
+
+            return (
+              <div className="actor" key={actor.id}>
+              <img src={castImage} alt={actor.name} />
               <div>
                 <h3>{actor.name}</h3>
                 <p>{actor.character}</p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
+        {cast.length > 5 && (
+          <button onClick={handleToggleCast} className="see-more-button">
+            {showFullCast ? 'See Less' : 'See More'}
+          </button>
+        )}
       </div>
-    <Recommended />
+    {/* <Recommended /> */}
     </>
   )
 }
