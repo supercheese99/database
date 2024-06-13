@@ -58,14 +58,12 @@ const roundToOneDecimal = (number) => {
     spaceBetween={100}
     slidesPerView={1}
     loop={true}
-    // autoplay={{
-    //   delay: 4000,
-    //   disableOnInteraction: false
-    // }}
-    // modules={[Autoplay]}
+    autoplay={{
+      delay: 4000,
+      disableOnInteraction: false
+    }}
+    modules={[Autoplay]}
     allowTouchMove={true}
-    preventClicks={false}
-    // preventClicksPropagation={false}
     onSlideChange={() => console.log('slide change')}
     onSwiper={(swiper) => console.log(swiper)}>
 

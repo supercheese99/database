@@ -1,0 +1,13 @@
+@use 'variables.scss';
+
+.movie-container {
+    display: flex;
+    flex-direction: column;
+    width: 90dvw;
+    padding-left: 5dvw;
+
+    .single-img {
+        height: auto;
+        object-fit: contain;
+    }
+}

@@ -14,6 +14,7 @@ const MoviePage = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cast, setCast] = useState([]);
   const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
 
   const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
@@ -36,6 +37,21 @@ const MoviePage = () => {
 
     fetchMovie();
   }, [id]);
+
+  useEffect(() => {
+    const fetchMovieCredits = async () => {
+      try {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`);
+        setCast(response.data.cast);
+      } catch (error) {
+        console.error('Error fetching movie credits:', error);
+      }
+    };
+
+    if (movie) {
+      fetchMovieCredits();
+    }
+  }, [id, movie]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -79,6 +95,7 @@ const image = buildImage(poster_path, "w500");
     <div className="movie-container">
 
       <img src={image} alt={original_title} className="single-img" />
+
       <div className='movie-info'>
         <h1>{original_title}</h1>
 
@@ -86,7 +103,7 @@ const image = buildImage(poster_path, "w500");
           <p className="release-date">Release Date: {formattedDate}</p>
           <div className="vote-fave">
             <h2 className="single-vote">{roundedVoteAverage}</h2>
-            <button onClick={handleToggleFavorite} className="fave-button">
+            <button onClick={handleToggleFavorite} className="favorite-button">
                 {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>
           </div>
@@ -97,6 +114,20 @@ const image = buildImage(poster_path, "w500");
       </div>
 
     </div>
+    <div className="cast-container">
+        <h2>Cast</h2>
+        <div className="cast-list">
+          {cast.map(actor => (
+            <div className="actor" key={actor.id}>
+              <img src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`} alt={actor.name} />
+              <div>
+                <h3>{actor.name}</h3>
+                <p>{actor.character}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     <Recommended />
     </>
   )
