@@ -105,6 +105,7 @@
 
         @media (min-width: variables.$laptop-breakpoint) {
             font-size: 1.25rem;
+            width: 10dvw;
         }
 
         &:hover, &:focus {

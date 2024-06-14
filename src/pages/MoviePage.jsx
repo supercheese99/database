@@ -160,7 +160,7 @@ const image = buildImage(poster_path, "w500");
           </button>
         )}
       </div>
-    {/* <Recommended /> */}
+    <Recommended />
     </>
   )
 }

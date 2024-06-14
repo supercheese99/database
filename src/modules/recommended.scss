@@ -1,0 +1,34 @@
+@use 'variables.scss';
+@use 'mixins.scss';
+
+.recommended-container {
+    padding-bottom: 2rem;
+
+    .swiper {
+        box-shadow: none;
+
+        a {
+            text-decoration: none;
+            color: variables.$accent-color;
+
+            .recommended-movie-item {
+            
+                img {
+                    width: 25dvw;
+                    border-radius: 10px;
+                    box-shadow: variables.$box-shadow;
+
+                    @media (min-width: variables.$desktop-breakpoint) {
+                        width: 20dvw;
+                    }
+                }
+    
+                h2 {
+                    font-size: 1rem;
+                    
+                }
+            }
+        }
+
+    }
+}
