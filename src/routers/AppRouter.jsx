@@ -25,11 +25,11 @@ const AppRouter = () => {
     <BrowserRouter>
         <Header />
         <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/movie/:id" element={<MoviePage />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/search/:query" element={<SearchPage searchResults={searchResults} />} />
+            <Route path="/SuperMovies" element={<HomePage />} />
+            <Route path="/SuperMovies/about" element={<AboutPage />} />
+            <Route path="/SuperMovies/movie/:id" element={<MoviePage />} />
+            <Route path="/SuperMovies/favorites" element={<Favorites />} />
+            <Route path="/SuperMovies/search/:query" element={<SearchPage searchResults={searchResults} />} />
         </Routes>
         <BackToTop />
         <Footer />

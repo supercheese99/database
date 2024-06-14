@@ -29,9 +29,9 @@ const Nav = ({ onSearch: handleSearch }) => {
             customBurgerIcon={<img className="open-menu-icon" src={customOpenIcon} />} 
             customCrossIcon={<img className="close-menu-icon" src={customCloseIcon} />} >
                 <ul className="nav-links">
-                    <li><NavLink to="/" >Home</NavLink></li>
-                    <li><NavLink to="/favorites" >Favorites</NavLink></li>
-                    <li><NavLink to="/about" >About</NavLink></li>
+                    <li><NavLink to="/SuperMovies" >Home</NavLink></li>
+                    <li><NavLink to="/SuperMovies/favorites" >Favorites</NavLink></li>
+                    <li><NavLink to="/SuperMovies/about" >About</NavLink></li>
                     <li><SearchBar onSearch={handleSearch} /></li>
                 </ul>
             </Menu>
