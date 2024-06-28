@@ -14,7 +14,7 @@ import 'swiper/css'
 const Slides = () => {
 
 const [movieData, setMovieData] = useState([]);
-const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const getRandomMovies = async () => {
   try {
@@ -86,7 +86,7 @@ const roundToOneDecimal = (number) => {
                   <h4>{formattedDate}</h4>
                   <p className='truncatedOverview'>{truncatedOverview}</p>
 
-                  <Link to={`/movie/${item.id}`}>
+                  <Link to={`./movie/${item.id}`}>
                   <button className="read-more">Read More</button>
                   </Link>
                 </div>

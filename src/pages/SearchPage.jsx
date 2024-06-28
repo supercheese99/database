@@ -48,7 +48,7 @@ const SearchPage = ({ searchResults }) => {
 
         return (
           <div className="movie-item">
-            <Link to={`/movie/${item.id}`}>
+            <Link to={`./movie/${item.id}`}>
 
               <img src={image} alt={item.original_title || item.original_name} className='movie-list-img' />
 

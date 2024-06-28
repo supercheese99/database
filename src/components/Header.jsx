@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <header>
-      <NavLink to="/" id="logo">Super Movies</NavLink>
+      <NavLink to="/SuperMovies" id="logo">Super Movies</NavLink>
       < Nav/>
     </header>
   )

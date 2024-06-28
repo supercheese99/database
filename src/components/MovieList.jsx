@@ -11,7 +11,7 @@ const MovieList = () => {
     const [movieData, setMovieData] = useState([]);
     const [movie, setMovie] = useState(null);
     const [categoryName, setCategoryName] = useState([]);
-    const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+    const apiKey = import.meta.env.VITE_TMDB_API_KEY;
     const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
 
     // fave icons
@@ -155,7 +155,7 @@ const MovieList = () => {
                                 </div>
                             </div>
 
-                            <Link to={`/movie/${movie.id}`}>
+                            <Link to={`./movie/${movie.id}`}>
                                 <img src={image} className="movie-list-img" />
                             </Link>
 

@@ -18,7 +18,7 @@ const MoviePage = () => {
   const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
   const [showFullCast, setShowFullCast] = useState(false);
 
-  const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+  const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   // fave icons
   const HeartXFilledSVG = () => (

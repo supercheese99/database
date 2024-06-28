@@ -41,7 +41,7 @@ const HeartPlusLinedSVG = () => (
       </div>
       {favorites.length === 0 ? (
         <div className="no-fave">
-          <p>No favorite movies yet. Add some from the <Link to='/'>Movie List!</Link></p>
+          <p>No favorite movies yet. Add some from the <Link to='/SuperMovies'>Movie List!</Link></p>
         </div>
       ) : (
         <div className="favorites-grid">
@@ -51,7 +51,7 @@ const HeartPlusLinedSVG = () => (
 
             return (
               <div key={movie.id} className="favorite-item">
-                <Link to={`/movie/${movie.id}`}>
+                <Link to={`/SuperMovies/movie/${movie.id}`}>
                   <img src={image} alt={movie.title} className="movie-list-img" />
                 </Link>
 

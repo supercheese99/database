@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 
 const Recommended = () => {
   const [movieData, setMovieData] = useState([]);
-  const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+  const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   const getRandomMovies = async () => {
     try {
@@ -63,7 +63,7 @@ const Recommended = () => {
 
           return (
             <SwiperSlide key={item.id}>
-              <Link to={`/movie/${item.id}`}>
+              <Link to={`./movie/${item.id}`}>
                 <div className='recommended-movie-item'>
                   <img src={image} alt={item.original_title} className='recommended-slider-img' />
                   <h2>{item.original_title}</h2>
