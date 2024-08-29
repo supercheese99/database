@@ -8,7 +8,7 @@ const SearchBar = ({ onSearch }) => {
   // const [result, setResult] = useState([]);
   const navigate = useNavigate();
 
-  const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+  const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -24,7 +24,7 @@ const SearchBar = ({ onSearch }) => {
       } else {
         console.error('onSearch is not a function');
       }
-      navigate(`/search/${query}`); // Navigate to the search results page
+      navigate(`/SuperMovies/search/${query}`); // Navigate to the search results page
     } catch (error) {
       console.error('Error fetching search results:', error);
     }

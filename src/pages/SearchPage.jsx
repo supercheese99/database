@@ -13,7 +13,7 @@ const SearchPage = ({ searchResults }) => {
   const [searchData, setSearchData] = useState([]);
   console.log('Received search results:', query);
 
-  const apiKey = 'db9961badca6dffe6a5b761b090bdc89';
+  const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   const handleSearch = async() => {
     try {
