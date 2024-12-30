@@ -63,7 +63,7 @@ const Recommended = () => {
 
           return (
             <SwiperSlide key={item.id}>
-              <Link to={`./movie/${item.id}`}>
+              <Link to={`/SuperMovies/movie/${item.id}`}>
                 <div className='recommended-movie-item'>
                   <img src={image} alt={item.original_title} className='recommended-slider-img' />
                   <h2>{item.original_title}</h2>
